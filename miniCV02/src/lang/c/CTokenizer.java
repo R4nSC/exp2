@@ -113,6 +113,7 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					text.append(ch);
 					state = 8;
 				} else if (ch == '/') {
+					int pos = colNo - 1;
 					ch = readChar();
 					if(ch == '/') {
 						while(ch != '\n' && ch != (char) -1) {
@@ -127,13 +128,14 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 							if(ch == (char) -1) {
 								text.append('/');
 								text.append('*');
-								startCol = colNo - 1;
+								startCol = pos;
 								state = 2;
+								break;
 							}
 						}
 					} else {
 						text.append('/');
-						startCol = colNo - 1;
+						startCol = pos;
 						state = 2;
 					}
 				} else {			// ヘンな文字を読んだ

@@ -33,7 +33,7 @@ public class UnsignedFactor extends CParseRule {
 				expression.parse(pcx);
 				tk = ct.getCurrentToken(pcx);
 				if(tk.getType() != CToken.TK_RPAR) {
-					pcx.fatalError("'('に対応する')'が足りません。");
+					pcx.fatalError(tk.toExplainString() + "'('に対応する')'が足りません");
 				}
 				ct.getNextToken(pcx);
 			}

@@ -30,6 +30,7 @@ public class TestCToken {
 
 	public static void main(String[] args) {
 		String inFile = "/Users/cs17053/eclipse-workspace/miniCV03forStudent2019/src/lang/c/test.c"; // 適切なファイルを絶対パスで与えること
+		//String inFile = "/Users/cs17053/eclipse-workspace/TestCases/ver03/ExpressionTest.c";
 		IOContext ioCtx = new IOContext(inFile, System.out, System.err);
 		CTokenizer tknz = new CTokenizer(new CTokenRule());
 		CParseContext pcx = new CParseContext(ioCtx, tknz);
