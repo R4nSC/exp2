@@ -99,13 +99,9 @@ class MinusFactor extends CParseRule {
 		op = ct.getCurrentToken(pcx);
 		CToken tk = ct.getNextToken(pcx);
 		if(UnsignedFactor.isFirst(tk)) {
-			if(FactorAmp.isFirst(tk)) {
-				pcx.fatalError(tk.toExplainString() + "整数へのポインタ型に-の符号はつけれません");
-			} else {
-				unsignedFactor = new UnsignedFactor(pcx);
-				unsignedFactor.parse(pcx);
-			}
-		}
+			unsignedFactor = new UnsignedFactor(pcx);
+			unsignedFactor.parse(pcx);
+		} 
 	}
 
 	public void semanticCheck(CParseContext pcx) throws FatalErrorException {

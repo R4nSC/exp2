@@ -117,7 +117,6 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 					text.append(ch);
 					state = 9;
 				} else if (ch == '/') {
-					int pos = colNo - 1;
 					ch = readChar();
 					if(ch == '/') {
 						while(ch != '\n' && ch != (char) -1) {
@@ -132,14 +131,13 @@ public class CTokenizer extends Tokenizer<CToken, CParseContext> {
 							if(ch == (char) -1) {
 								text.append('/');
 								text.append('*');
-								startCol = pos;
+								startCol = colNo - 1;
 								state = 2;
-								break;
 							}
 						}
 					} else {
 						text.append('/');
-						startCol = pos;
+						startCol = colNo - 1;
 						state = 10;
 						backChar(ch);
 					}
